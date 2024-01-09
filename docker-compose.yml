@@ -1,0 +1,83 @@
+version: "3.8"
+services:
+  jenkins-server:
+    container_name: jenkins-server
+    image: completed0728/jenkins-server:1.0
+    privileged: true
+    environment:
+      container: docker
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    ports:
+      - "10022:22"
+      - "8080:8080"
+    cgroup: host
+    command: /usr/sbin/init
+    networks:
+      my-network:
+        ipv4_address: 172.19.0.2
+
+  ansible-server:
+    container_name: ansible-server
+    image: completed0728/ansible-server:1.0
+    privileged: true
+    environment:
+      container: docker
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    ports:
+      - "20022:22"
+    cgroup: host
+    depends_on:
+      - jenkins-server
+    command: /usr/sbin/init
+    networks:
+      my-network:
+        ipv4_address: 172.19.0.3
+
+  delivery-docker-server:
+    container_name: delivery-docker-server
+    image: completed0728/docker-server:1.0
+    privileged: true
+    environment:
+      container: docker
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    ports:
+      - "31022:22"
+    cgroup: host
+    depends_on:
+      - ansible-server
+    command: /usr/sbin/init
+    networks:
+      my-network:
+        ipv4_address: 172.19.0.4
+  
+  delpoy-docker-server:
+    container_name: delpoy-docker-server
+    image: completed0728/docker-server:1.0
+    privileged: true
+    environment:
+      container: docker
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    ports:
+      - "32022:22"
+      - "8000:8000"
+      - "8888:8888"
+      - "3306:3306"
+      - "9411:9411"
+      - "9090:9090"
+      - "5672:5672"
+      - "3000:3000"
+    cgroup: host
+    depends_on:
+      - delivery-docker-server
+    command: /usr/sbin/init
+    networks:
+      my-network:
+        ipv4_address: 172.19.0.5
+networks:
+  my-network:
+    external: true
+    name: cicd-network
