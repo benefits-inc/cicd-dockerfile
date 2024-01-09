@@ -23,7 +23,7 @@ RUN echo 'root:benefits' | chpasswd
 # RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
 #RUN apt-get install -y openssh-clients
 
-# git : 이미 설치 되어있음 명시 목적
+# git 설치
 RUN apt-get install -y git 
 
 # maven 설치

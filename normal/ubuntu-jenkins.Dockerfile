@@ -18,6 +18,9 @@ RUN echo 'root:benefits' | chpasswd
 # RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
 #RUN apt-get install -y openssh-clients
 
+# git 설치
+RUN apt-get install -y git
+
 # jenkins, jdk 17: https://www.jenkins.io/download/
 RUN sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
     https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
