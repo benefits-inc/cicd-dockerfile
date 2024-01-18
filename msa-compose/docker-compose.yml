@@ -33,6 +33,8 @@ services:
     restart: always
     container_name: zipkin
     image: openzipkin/zipkin
+    environment:
+      JAVA_OPTS: "-Xms1g -Xmx1g -XX:+ExitOnOutOfMemoryError"
     ports:
       - "9411:9411"
     networks:
