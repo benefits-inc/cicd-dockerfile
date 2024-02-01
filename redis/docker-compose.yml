@@ -1,0 +1,67 @@
+# docker network create --gateway 172.24.0.1 --subnet 172.24.0.0/16 redis-network
+version: "3.8"
+services:
+  redis-master:
+    container_name: redis-master
+    image: completed0728/redis-master:1.0
+    privileged: true
+    environment:
+      container: docker
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    ports:
+      - "2222:22"
+      - "6379:6379"
+    # expose:
+    #   - 6379
+    #   - 26379
+    cgroup: host
+    command: /usr/sbin/init
+    networks:
+      my-network:
+        ipv4_address: 172.24.0.2
+    
+  redis-slave:
+    container_name: redis-slave
+    image: completed0728/redis-slave:1.0
+    privileged: true
+    environment:
+      container: docker
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    ports:
+      - "3322:22"
+      - "6380:6379"
+    # expose:
+    #   - 6379
+    #   - 26379
+    cgroup: host
+    command: 
+      - /usr/sbin/init
+    networks:
+      my-network:
+        ipv4_address: 172.24.0.3
+  
+  redis-sentinel:
+    container_name: redis-sentinel
+    image: completed0728/redis-sentinel:1.0
+    privileged: true
+    environment:
+      container: docker
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    ports:
+      - "4422:22"
+    # expose:
+    #   - 26379
+    cgroup: host
+    command: 
+      - /usr/sbin/init
+    networks:
+      my-network:
+        ipv4_address: 172.24.0.4
+
+networks:
+  my-network:
+    external: true
+    name: redis-network
