@@ -273,7 +273,10 @@ latency-monitor-threshold 0 -> latency-monitor-threshold 100
 
 config rewrite // 저장
 
+<br><br>
+
 ## GUI tool
+참고: https://docs.redis.com/latest/ri/installing/install-ec2/
 
 `completed0728/redis-insight:1.0`
 
