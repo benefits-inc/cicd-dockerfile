@@ -283,6 +283,15 @@ config rewrite // 저장
 
 ![](https://velog.velcdn.com/images/develing1991/post/97c6bc3a-027f-4f6f-acbe-32cd0e15f153/image.png)
 
-- gui 환경으로 configuration이나 cli등을 편리하게 이용할 수 있다.
+<br>
+
+- GUI 환경으로 redis를 관리
+- configuration이나 redis-cli등을 편리하게 이용할 수 있다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/74d15884-9bcf-4765-bf84-a34a5539538b/image.png)
+
+<br>
+
+- 편리하다
+
+![](https://velog.velcdn.com/images/develing1991/post/940e5f80-1dca-486e-96b8-040abfa9dba5/image.png)
