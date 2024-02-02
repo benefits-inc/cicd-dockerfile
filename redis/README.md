@@ -300,6 +300,6 @@ config rewrite // 저장
 
 <br>
 
-- 편리하다
+- 세션 관리 예시 (토큰 만료시간 ttl 옵션 지정)
 
 ![](https://velog.velcdn.com/images/develing1991/post/940e5f80-1dca-486e-96b8-040abfa9dba5/image.png)
