@@ -312,11 +312,11 @@ config rewrite // 저장
 
 ### 구글 맵 위경도 거리 계산
 
-참고: https://redis.io/commands/geoadd/  
+참고: https://redis.io/commands/geoadd/
 
 예를 들어 쿠x같이 물류센터가 여러 군데 나뉘어 있을 수 있기 때문에  
 사용자의 현재 접속 위경도를 받아서 네이버 지도 같은 map api를 호출해서 가까운 물류센터를 계산해 컨택할 건데  
 일정 호출 건이 넘어가면 비용이 들게 되니까..  
 redis의 geo활용 사례를 참고해서 위경도 값을 넣어 놓고 관리하는 것도 방법 일듯 하다  
 
-![](https://velog.velcdn.com/images/develing1991/post/d0e1a3c7-4714-43d8-a9de-f757907bd178/image.png)
+![](https://velog.velcdn.com/images/develing1991/post/7cc297b2-7f3f-4155-b7e4-09744b138306/image.png)
