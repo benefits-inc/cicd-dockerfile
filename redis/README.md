@@ -269,6 +269,7 @@ latency-monitor-threshold 0 -> latency-monitor-threshold 100
 - 1초간 sleep 실행
 - debug sleep 1 
 - latency history를 통해 어디서 얼마나 시간이 걸렸는지 확인 가능
+
 ![](https://velog.velcdn.com/images/develing1991/post/6da1f0f7-7edf-40bb-acc5-66888352e0eb/image.png)
 
 ### 기타 default redis.conf에 따른 장애 ->  기본 값 설정 변경
