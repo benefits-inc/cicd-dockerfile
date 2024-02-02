@@ -60,6 +60,28 @@ services:
     networks:
       my-network:
         ipv4_address: 172.24.0.4
+  
+  redis-insight:
+    container_name: redis-insight
+    image: completed0728/redis-insight:1.0
+    privileged: true
+    environment:
+      container: docker
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    ports:
+      - "5522:22"
+      - "8001:8001"
+    # expose:
+    #   - 26379
+    cgroup: host
+    # redis insight GUI container run
+    command:
+      - /usr/sbin/init 
+      # - sh /bin/insight.sh
+    networks:
+      my-network:
+        ipv4_address: 172.24.0.5
 
 networks:
   my-network:
