@@ -14,10 +14,15 @@ RUN apt install -y net-tools iputils-ping
 # Redis install
 RUN apt install -y redis-server
 # set /etc/redis/redis.conf
-# maxmemory 500mb - common
+
+# redis maxmemory 500mb config set
 RUN sed -i 's/# maxmemory <bytes>/maxmemory 500mb/' /etc/redis/redis.conf
+# redis other redis connect enable config set
 RUN sed -i 's/bind 127.0.0.1 ::1/bind 0.0.0.0 ::1/' /etc/redis/redis.conf
-# replicaof 172.24.0.2 6379 - slave
+# redis monitoring latency threshold 100 config set
+RUN sed -i 's/latency-monitor-threshold 0/latency-monitor-threshold 100/' /etc/redis/redis.conf
+
+# replicaof 172.24.0.2 6379 - slave config set
 RUN sed -i 's/# replicaof <masterip> <masterport>/replicaof 172.24.0.2 6379/' /etc/redis/redis.conf
 
 
