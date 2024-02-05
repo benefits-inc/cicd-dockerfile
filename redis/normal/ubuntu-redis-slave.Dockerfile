@@ -32,7 +32,7 @@ RUN apt install -y redis-sentinel
 # 바인드 주소 172.24.0.3 명시
 RUN sed -i 's/bind 127.0.0.1 ::1/bind 172.24.0.3 127.0.0.1 ::1/' /etc/redis/sentinel.conf
 # 바인드 주소 172.24.0.2 마스터의 주소, 2는 3개 중 다수결 2/3 sentinel
-RUN sed -i 's/monitor mymaster 127.0.0.1 6379 2/monitor mymaster 172.24.0.2 6379 2/' /etc/redis/sentinel.conf
+RUN sed -i 's/monitor mymaster 127.0.0.1 6379 2/monitor mymaster 192.168.0.11 6379 2/' /etc/redis/sentinel.conf
 
 
 # SSH
